@@ -44,17 +44,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Initialize Firebase Authentication and Firestore
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+
+        // Initialize views
 
         drawerLayout = findViewById(R.id.drawerLayout)
         navBar = findViewById(R.id.navBar)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
 
+        // Initialize NavController for navigation
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        // Generate Firebase token
 
         generateToken()
         setDrawerLayoutNavBar(toolbar)
@@ -63,9 +70,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         searchUserBtn.setOnClickListener {
 
+            // Vibrate device and start SearchUserActivity
+
              VibrationUtil.vibrate(applicationContext)
             startActivity(Intent(applicationContext, SearchUserActivity::class.java))
         }
+
+        // Function to customize menu items in NavigationView
 
         val menu = navBar.menu
 
@@ -89,12 +100,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    // Function to hide the toolbar
+
     public fun hideToolbar() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.visibility = View.INVISIBLE
         val searchUserBtn = findViewById<CardView>(R.id.servicesView)
         searchUserBtn.visibility = View.GONE
     }
+
+    // Function to show the toolbar with a delay
 
     public fun showToolbar() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -105,6 +120,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }, 330)
     }
 
+    // Set up DrawerLayout and NavigationView with ActionBarDrawerToggle
+
+
     private fun setDrawerLayoutNavBar(toolbar: Toolbar) {
         title = ""
         val toggle =
@@ -114,6 +132,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navBar.setNavigationItemSelectedListener(this)
     }
 
+    // Function to generate Firebase token and store it in Firestore
 
     fun generateToken() {
 
@@ -132,6 +151,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 firestore.collection("Tokens").document(Utils.getUidLoggedIn()).set(hasHamp)
                     .addOnSuccessListener {
 
+                        // Token stored successfully
 
                     }
 
@@ -141,11 +161,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }.addOnFailureListener {
 
+            // Failed to generate token
+
 
         }
 
 
     }
+
+    // Update user status to "Online" when app resumes
 
 
     override fun onResume() {
@@ -161,6 +185,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    // Update user status to "Offline" when app pauses
+
     override fun onPause() {
         super.onPause()
 
@@ -175,6 +201,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    // Update user status to "Offline" when app is destroyed
+
     override fun onDestroy() {
         if (auth.currentUser != null) {
 
@@ -187,20 +215,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onDestroy()
     }
 
+    // Update user status to "Online" when app starts
+
     override fun onStart() {
         super.onStart()
-
         if (auth.currentUser != null) {
-
 
             firestore.collection("Users").document(Utils.getUidLoggedIn())
                 .update("status", "Online")
-
 
         }
     }
 
 
+    // Handle back button press
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
@@ -216,26 +244,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    // Handle NavigationView item selection
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.logout -> {
-                if (auth.currentUser != null) {
 
+                // Update user status to "Offline" before logging out
+
+                if (auth.currentUser != null) {
 
                     firestore.collection("Users").document(Utils.getUidLoggedIn())
                         .update("status", "Offline")
 
 
                 }
+
+                // Sign out user and navigate to SignInActivity
+
                 val firebaseAuth = FirebaseAuth.getInstance()
                 firebaseAuth.signOut()
                 startActivity(Intent(applicationContext, SignInActivity::class.java))
                 finish()
             }
+                //Navigate to settings activity
 
             R.id.settings -> {
                 startActivity(Intent(applicationContext, SettingsActivity::class.java))
             }
+                // Share the app
 
             R.id.share -> {
                 shareApp()
@@ -245,7 +282,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true;
     }
-
+    // Function to share the application
     private fun shareApp() {
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = "text/plain"

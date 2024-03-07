@@ -4,6 +4,13 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 
+/**
+ * Utility class for handling device vibration.
+ * Provides methods to trigger vibrations with custom durations and amplitudes,
+ * as well as a default vibration method.
+ * Uses system Vibrator service and adapts vibration effects based on Android version.
+ */
+
 object VibrationUtil {
 
     private const val DEFAULT_VIBRATION_DURATION = 100L // in milliseconds

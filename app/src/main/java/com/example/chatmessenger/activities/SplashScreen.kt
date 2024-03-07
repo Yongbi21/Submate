@@ -11,6 +11,10 @@ import com.example.chatmessenger.modal.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Activity splash screen that upon clicking or entering the app this splashscreen will show or appear.
+ */
+
 class SplashScreen : AppCompatActivity() {
 
 

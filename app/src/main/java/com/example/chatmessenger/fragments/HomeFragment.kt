@@ -32,6 +32,25 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import de.hdodenhof.circleimageview.CircleImageView
 
+
+/**
+ * Fragment responsible for managing the home screen UI.
+ * Displays a list of users and recent chats.
+ * Allows users to navigate to the settings screen.
+ * Provides options to log out from the application.
+ *
+ * @property rvUsers RecyclerView for displaying the list of users.
+ * @property rvRecentChats RecyclerView for displaying the list of recent chats.
+ * @property adapter Adapter for the user list RecyclerView.
+ * @property viewModel ViewModel responsible for managing UI data and business logic.
+ * @property toolbar Toolbar for the home screen.
+ * @property circleImageView CircleImageView for displaying the user profile image in the toolbar.
+ * @property recentadapter Adapter for the recent chats RecyclerView.
+ * @property firestore Instance of FirebaseFirestore for accessing Firestore database.
+ * @property binding The data binding instance for the fragment's layout.
+ */
+
+
 class HomeFragment : Fragment(), OnItemClickListener, onChatClicked {
 
 

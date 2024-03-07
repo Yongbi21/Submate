@@ -23,6 +23,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import de.hdodenhof.circleimageview.CircleImageView
 
+/**
+ * Adapter for the RecyclerView displaying recent chats.
+ * Responsible for inflating recent chat list item views and binding chat data to them.
+ * Adapter class for the RecyclerView displaying recent chats.
+ *
+ * @property listOfChats List of recent chats to display.
+ * @property listener Listener for handling click events on chat items.
+ */
+
 class RecentChatAdapter : RecyclerView.Adapter<MyChatListHolder>() {
 
     var listOfChats = listOf<RecentChats>()
@@ -101,6 +110,11 @@ class RecentChatAdapter : RecyclerView.Adapter<MyChatListHolder>() {
 
 }
 
+/**
+ * ViewHolder class for the recent chat list item view.
+ * Responsible for holding references to views within the item layout.
+ */
+
 class MyChatListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val imageView: CircleImageView = itemView.findViewById(R.id.recentChatImageView)
@@ -110,7 +124,13 @@ class MyChatListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
 }
-
+/**
+ * Interface for handling click events on recent chat items.
+ * Function to handle the click event on a recent chat item.
+ *
+ * @param position The position of the clicked item in the list.
+ * @param chatList The recent chat object associated with the clicked item.
+ */
 
 interface onChatClicked {
     fun getOnChatCLickedItem(position: Int, chatList: RecentChats)

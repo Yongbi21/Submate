@@ -3,6 +3,21 @@ package com.example.chatmessenger.modal
 import android.os.Parcel
 import android.os.Parcelable
 
+/**
+ * Data class representing user information.
+ *
+ * @property userid The ID of the user.
+ * @property status The status of the user.
+ * @property imageUrl The URL of the user's profile image.
+ * @property username The username of the user.
+ * @property usernamelowercase The lowercase version of the username.
+ * @property useremail The email address of the user.
+ * @property firstname The first name of the user.
+ * @property lastname The last name of the user.
+ * @property gender The gender of the user.
+ * @property code The verification code of the user.
+ * @property verified The verification status of the user.
+ */
 
 data class Users(
 

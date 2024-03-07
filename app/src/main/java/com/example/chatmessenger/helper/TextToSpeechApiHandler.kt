@@ -6,7 +6,19 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import org.json.JSONObject
 import java.io.IOException
 
+/**
+ * Helper class for interacting with the text-to-speech API.
+ */
+
 class TextToSpeechApiHandler {
+
+    /**
+     * Synthesizes text to speech using the provided parameters.
+     *
+     * @param text The text to synthesize.
+     * @param voiceCode The voice code for the speech.
+     * @param callback Callback function to handle the result.
+     */
 
     private val client = OkHttpClient()
     private var mediaPlayer: MediaPlayer? = null
@@ -42,6 +54,12 @@ class TextToSpeechApiHandler {
         })
     }
 
+    /**
+     * Plays audio from the provided URL.
+     *
+     * @param audioUrl The URL of the audio to play.
+     */
+
     fun playAudioFromUrl(audioUrl: String) {
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer()
@@ -56,6 +74,10 @@ class TextToSpeechApiHandler {
             it.start()
         }
     }
+
+    /**
+     * Releases the media player resources.
+     */
 
     fun releaseMediaPlayer() {
         mediaPlayer?.release()

@@ -11,6 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.chatmessenger.R
 
+
+// Not used
+
+
 class AudioCallFragment : Fragment() {
 
     private lateinit var profileBackground: ImageView

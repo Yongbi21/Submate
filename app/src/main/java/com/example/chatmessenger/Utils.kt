@@ -13,36 +13,32 @@ import kotlin.collections.HashMap
 
 class Utils {
 
-
+    // Companion object to hold static properties
     companion object {
+        // Get the application context
         @SuppressLint("StaticFieldLeak")
         val context = MyApplication.instance.applicationContext
 
+        // Get the instance of Firestore database
         @SuppressLint("StaticFieldLeak")
         val firestore = FirebaseFirestore.getInstance()
 
-
+        // Get the instance of Firebase Authentication
         private val auth = FirebaseAuth.getInstance()
+        // Variable to hold the current user ID
         private var userid: String = ""
         const val REQUEST_IMAGE_CAPTURE = 1
         const val REQUEST_IMAGE_PICK = 2
+
+        // Function to get the logged-in user ID
         fun getUidLoggedIn(): String {
-
             if (auth.currentUser != null) {
-
-
                 userid = auth.currentUser!!.uid
-
-
             }
-
-
             return userid
-
-
         }
 
-
+        // Function to get the current time
         fun getTime(): String {
             // Specify the time zone for the Philippines
             val timeZone = TimeZone.getTimeZone("Asia/Manila")
@@ -57,8 +53,5 @@ class Utils {
             // Format the date and time and return it as a string
             return formatter.format(currentDate)
         }
-
-
-        }
-
     }
+}

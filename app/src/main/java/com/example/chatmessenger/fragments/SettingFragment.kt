@@ -39,6 +39,25 @@ import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
 import java.util.*
 
+
+/**
+ * Fragment for managing user settings.
+ * Allows users to update their profile information and profile picture.
+ * Users can select their gender, update their profile, and change their profile picture either by taking a photo with the camera or choosing from the gallery.
+ * Handles image uploading to Firebase Storage.
+ * Uses ViewModel to observe and update profile information.
+ * Utilizes custom FontSizeHelper and FontFamilyHelper to manage text size and font family.
+ *
+ * @property viewModel The ViewModel responsible for managing UI data and business logic.
+ * @property binding The data binding instance for the fragment's layout.
+ * @property storageRef Reference to Firebase Storage for managing image uploads.
+ * @property storage Instance of FirebaseStorage.
+ * @property uri The URI of the selected image.
+ * @property bitmap The bitmap representation of the selected image.
+ * @property gender The selected gender of the user.
+ */
+
+
 class SettingFragment : Fragment() {
 
     lateinit var viewModel: ChatAppViewModel

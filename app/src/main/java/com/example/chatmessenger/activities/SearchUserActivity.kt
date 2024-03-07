@@ -17,6 +17,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
+/**
+ * Activity to search for users within the app.
+ */
+
 class SearchUserActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySearchUserBinding
@@ -34,13 +38,17 @@ class SearchUserActivity : AppCompatActivity() {
 
              finish() }
 
+        // Set font size and family for toolbar title
 
         binding.toolbarTitleText.textSize = FontSizeHelper.getFontRecentMessageDescriptioSize(this)
         FontFamilyHelper.applyFontFamily(this, binding.toolbarTitleText)
 
+        // Set font size and family for search text
+
         binding.searchText.textSize = FontSizeHelper.getFontRecentMessageDescriptioSize(this)
         FontFamilyHelper.applyFontFamily(this, binding.searchText)
 
+        // TextWatcher for live user search
 
         binding.searchText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -61,6 +69,11 @@ class SearchUserActivity : AppCompatActivity() {
         performUserSearch("")
 
     }
+
+    /**
+     * Performs a search for users based on the provided search name.
+     * @param searchName The name to search for.
+     */
 
     private fun performUserSearch(searchName: String) {
         if (searchName.isEmpty() || searchName == ""){

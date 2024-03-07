@@ -21,6 +21,16 @@ import androidx.core.app.RemoteInput
 import androidx.navigation.NavDeepLinkBuilder
 import com.example.chatmessenger.SharedPrefs
 
+
+/**
+ * This class, FirebaseService, extends FirebaseMessagingService to handle Firebase Cloud Messaging.
+ * It manages incoming messages, generates notifications, and provides a method to obtain a new FCM token.
+ * Notifications include actions such as reply functionality.
+ * This class also creates a notification channel for devices running Android Oreo or higher.
+ * @file:Suppress("DEPRECATION") is used to suppress deprecation warnings related to older notification APIs.
+ */
+
+
 private const val CHANNEL_ID = "my_channel"
 
 class FirebaseService : FirebaseMessagingService() {

@@ -28,8 +28,23 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
+/**
+ * Adapter for the RecyclerView displaying a list of users in search results.
+ * Responsible for inflating search user list item views and binding user data to them.
+ *
+ * @property searchUserList List of users to display in search results.
+ */
+
+
 class SearchUserAdapter(private val searchUserList: ArrayList<Users>) :
     RecyclerView.Adapter<SearchUserAdapter.ViewHolder>() {
+
+    /**
+     * ViewHolder for the search user item view.
+     * Responsible for holding references to views within the item layout.
+     *
+     * @property binding The binding object for the search user item layout.
+     */
 
     class ViewHolder(val binding: LayoutSearchUserBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -65,6 +80,14 @@ class SearchUserAdapter(private val searchUserList: ArrayList<Users>) :
             showDialogAdd(holder.itemView.context, user, binding.addButton.text.toString(), binding)
         }
     }
+
+    /**
+     * Function to check and set status for add/remove button based on user's friend status.
+     *
+     * @param context The context of the calling activity or fragment.
+     * @param binding The binding object for the search user item layout.
+     * @param user The user object for which the status is checked.
+     */
 
     private fun onChangeStatus(context: Context, binding: LayoutSearchUserBinding, user: Users) {
         val firebaseUser = FirebaseAuth.getInstance().currentUser
@@ -105,6 +128,14 @@ class SearchUserAdapter(private val searchUserList: ArrayList<Users>) :
         }
     }
 
+    /**
+     * Function to show the add/remove user dialog.
+     *
+     * @param context The context of the calling activity or fragment.
+     * @param user The user object for which the dialog is displayed.
+     * @param status The current status of the user (add or remove).
+     * @param binding The binding object for the search user item layout.
+     */
 
     private fun showDialogAdd(
         context: Context,

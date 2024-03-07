@@ -57,6 +57,22 @@ import com.google.firebase.firestore.FirebaseFirestore
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.Locale
 
+/**
+ * Fragment responsible for managing the chat UI.
+ * Allows users to exchange messages with each other.
+ * Provides options for sending messages via text or speech input.
+ *
+ * @property args Arguments passed to the fragment, including information about the user and chat.
+ * @property binding The data binding instance for the fragment's layout.
+ * @property viewModel ViewModel responsible for managing UI data and business logic.
+ * @property adapter Adapter for the messages RecyclerView.
+ * @property toolbar Toolbar for the chat screen.
+ * @property textToSpeech TextToSpeech engine for converting text to speech.
+ * @property edMessage EditText for typing messages.
+ * @property textViewStatus TextView displaying the user's status.
+ * @property result Activity result launcher for handling speech recognition.
+ */
+
 
 class ChatFragment : Fragment(), MessageAdapter.MessageClickListener {
 

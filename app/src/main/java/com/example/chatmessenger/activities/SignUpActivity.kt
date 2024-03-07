@@ -23,6 +23,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
+/**
+ * Activity for user sign-up.
+ */
+
 
 class  SignUpActivity : AppCompatActivity() {
 
@@ -36,6 +40,12 @@ class  SignUpActivity : AppCompatActivity() {
     private lateinit var password: String
     private lateinit var confirmpassword: String
     private var gender: String = ""
+
+
+    /**
+     * Refresh text size and font family for all relevant views.
+     */
+
 
     private fun refreshTextSize() {
         signUpBinding.firstnameText.textSize =

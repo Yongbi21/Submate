@@ -15,6 +15,16 @@ import com.example.chatmessenger.modal.Users
 import com.example.chatmessenger.utility.VibrationUtil
 import de.hdodenhof.circleimageview.CircleImageView
 
+
+/**
+ * Adapter for the RecyclerView displaying a list of users.
+ * Responsible for inflating user list item views and binding user data to them.
+ *
+ * @property listOfUsers List of users to display.
+ * @property listener Listener to handle user item click events.
+ */
+
+
 class UserAdapter : RecyclerView.Adapter<UserHolder>() {
 
     private var listOfUsers = listOf<Users>()
@@ -83,6 +93,13 @@ class UserAdapter : RecyclerView.Adapter<UserHolder>() {
 
 }
 
+/**
+ * ViewHolder for the user item view.
+ * Responsible for holding references to views within the item layout.
+ *
+ * @property itemView The view for the user item.
+ */
+
 class UserHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
     val profileName: TextView = itemView.findViewById(R.id.userName)
@@ -92,6 +109,13 @@ class UserHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
 }
+
+/**
+ * Called when a user item is clicked.
+ *
+ * @param position The position of the clicked item in the list.
+ * @param users The user object associated with the clicked item.
+ */
 
 interface OnItemClickListener{
     fun onUserSelected(position: Int, users: Users)

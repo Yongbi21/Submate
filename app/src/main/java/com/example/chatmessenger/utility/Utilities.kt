@@ -3,6 +3,7 @@ package com.example.chatmessenger.utility
 import java.util.Random
 
 class Utilities {
+    // Function to generate codes randomly to be send in gmail
     companion object {
         fun generateRandomCode(): String {
             val random = Random()

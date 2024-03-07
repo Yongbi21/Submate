@@ -27,6 +27,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
+/**
+ * Activity to send verification code for account verification.
+ */
+
 class SendCodeActivity : AppCompatActivity() {
 
 

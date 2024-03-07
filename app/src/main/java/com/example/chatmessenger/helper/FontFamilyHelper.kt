@@ -6,6 +6,9 @@ import android.graphics.Typeface
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import com.example.chatmessenger.R
+/**
+ * Class that is responsibl for the font styles
+ */
 
 class FontFamilyHelper(context: Context) {
 

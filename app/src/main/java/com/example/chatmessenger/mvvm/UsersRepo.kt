@@ -9,10 +9,22 @@ import com.example.chatmessenger.modal.Users
 import com.example.chatmessenger.notifications.entity.Token
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Repository class responsible for fetching user data from Firestore database.
+ */
+
 class UsersRepo {
+
+    // Initialize Firestore instance
 
     private val firestore = FirebaseFirestore.getInstance()
 
+    /**
+     * Retrieves a LiveData object containing a list of users.
+     * Filters out the current user and only returns users who are friends.
+     *
+     * @return LiveData<List<Users>> representing the list of users.
+     */
 
     fun getUsers(): LiveData<List<Users>> {
         val users = MutableLiveData<List<Users>>()

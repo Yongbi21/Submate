@@ -11,6 +11,20 @@ import android.widget.TextView
 import com.example.chatmessenger.R
 import com.example.chatmessenger.helper.FontFamilyHelper
 
+/**
+ * Custom ArrayAdapter for a spinner, providing custom font family support.
+ *
+ * @param context The context in which the spinner adapter is used.
+ * @param objects The array of items to be displayed in the spinner.
+ *
+ * Overrides the method to customize the appearance of the selected item view in the spinner.
+ *
+ * @param position The position of the item within the adapter's data set.
+ * @param convertView The old view to reuse, if possible.
+ * @param parent The parent view that this view will eventually be attached to.
+ * @return The customized view representing the selected item.
+ */
+
 class CustomSpinnerAdapter(context: Context, objects: Array<String>) :
     ArrayAdapter<String>(context, R.layout.spinner_dropdown_item, objects) {
 
@@ -24,6 +38,15 @@ class CustomSpinnerAdapter(context: Context, objects: Array<String>) :
 
         return view
     }
+
+    /**
+     * Overrides the method to customize the appearance of dropdown items in the spinner.
+     *
+     * @param position The position of the item within the adapter's data set.
+     * @param convertView The old view to reuse, if possible.
+     * @param parent The parent view that this view will eventually be attached to.
+     * @return The customized view representing a dropdown item.
+     */
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = inflater.inflate(R.layout.spinner_dropdown_item, parent, false)

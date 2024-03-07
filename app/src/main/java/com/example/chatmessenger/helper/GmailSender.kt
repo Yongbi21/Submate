@@ -6,6 +6,9 @@ import javax.mail.*
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
+/**
+ * Class responsible for sending emails using Gmail SMTP server.
+ */
 
 class GmailSender {
     private val session: Session
@@ -26,6 +29,13 @@ class GmailSender {
             }
         })
     }
+
+    /**
+     * Sends an email with the provided verification code to the specified email address.
+     *
+     * @param codeSend The verification code to be sent.
+     * @param email The recipient's email address.
+     */
 
 
     fun sendEmail(

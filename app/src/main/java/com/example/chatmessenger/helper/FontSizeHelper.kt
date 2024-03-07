@@ -3,6 +3,12 @@ package com.example.chatmessenger.helper
 import android.content.Context
 import android.content.SharedPreferences
 
+/**
+ * Helper class for managing font sizes.
+ *
+ * @param context The context used to access SharedPreferences.
+ */
+
 class FontSizeHelper(context: Context) {
 
     companion object {
@@ -20,11 +26,27 @@ class FontSizeHelper(context: Context) {
             4 to 34f
         )
 
+
+        /**
+         * Retrieves the font size title based on the current progress.
+         *
+         * @param context The context used to access resources.
+         * @return The font size title.
+         */
+
+
         @JvmStatic
         fun getFontTitleSize(context: Context): Float {
             var progress = FontSizeHelper(context).getFontSizeProgress()
             return FONT_SIZE_MAP[progress] ?: DEFAULT_FONT_SIZE
         }
+
+        /**
+         * Calculates the font size title with the given progress.
+         *
+         * @param progress The progress value.
+         * @return The font size.
+         */
 
         @JvmStatic
         fun calcualteFontTitleSizeWithProgress(progress: Int): Float {
@@ -72,19 +94,42 @@ class FontSizeHelper(context: Context) {
         Context.MODE_PRIVATE
     )
 
+    /**
+     * Saves the font size progress to SharedPreferences.
+     *
+     * @param progress The progress value to be saved.
+     */
+
     fun saveFontSizeProgress(progress: Int) {
         sharedPreferences.edit().putInt(FONT_SIZE_KEY, progress).apply()
     }
 
+    /**
+     * Retrieves the font size progress from SharedPreferences.
+     *
+     * @return The font size progress.
+     */
+
     fun getFontSizeProgress(): Int {
         return sharedPreferences.getInt(FONT_SIZE_KEY, DEFAULT_FONT_SIZE_PROGRESS)
     }
+    /**
+     * Saves the font size to SharedPreferences.
+     *
+     * @param fontSize The font size to be saved.
+     */
 
     fun saveFontSize(fontSize: Float) {
         val progress = FONT_SIZE_MAP.entries.find { it.value == fontSize }?.key
             ?: DEFAULT_FONT_SIZE_PROGRESS
         saveFontSizeProgress(progress)
     }
+
+    /**
+     * Retrieves the font size based on the current progress.
+     *
+     * @return The font size.
+     */
 
     fun getFontSize(): Float {
         val progress = getFontSizeProgress()

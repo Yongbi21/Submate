@@ -1,5 +1,8 @@
 package com.example.chatmessenger.notifications
 
+
+// This functions as a class to get the server key of the notification api
+
 class Constants {
     companion object {
         const val BASE_URL = "https://fcm.googleapis.com"

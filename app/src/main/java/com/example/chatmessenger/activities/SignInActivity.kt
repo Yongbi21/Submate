@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Activity for user sign-in.
+ */
 
 class SignInActivity : AppCompatActivity() {
 
@@ -31,6 +34,10 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
     private lateinit var signInBinding: ActivitySignInBinding
     lateinit var binding: ActivitySignInBinding
+
+    /**
+     * Refresh text size and font family for all relevant views.
+     */
 
     private fun refreshTextSize() {
         binding.loginetemail.textSize = FontSizeHelper.getFontDescriptionSize(applicationContext)

@@ -21,9 +21,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import java.util.Locale
 
+/**
+ * ViewModel class responsible for managing UI-related data and handling user actions.
+ */
+
 class ChatAppViewModel : ViewModel() {
 
 
+    // Initialize LiveData objects
 
     val message = MutableLiveData<String>()
     val firestore = FirebaseFirestore.getInstance()
@@ -34,11 +39,14 @@ class ChatAppViewModel : ViewModel() {
     val imageUrl = MutableLiveData<String>()
     private lateinit var adapter: MessageAdapter
 
+    // Initialize repositories
+
     val usersRepo = UsersRepo()
     val messageRepo = MessageRepo()
     var token: String? = null
     val chatlistRepo = ChatListRepo()
 
+    // Initialize ViewModel
 
 
     init {
@@ -63,7 +71,8 @@ class ChatAppViewModel : ViewModel() {
                 messageValue = ""
             }
 
-            // Explicit cast to Map<String, Any>
+            // Create message data
+
             val hashMap: Map<String, Any> = hashMapOf(
                 "sender" to sender,
                 "receiver" to receiver,
@@ -81,8 +90,12 @@ class ChatAppViewModel : ViewModel() {
             mysharedPrefs.setValue("friendname", friendnamesplit)
             mysharedPrefs.setValue("friendimage", friendimage)
 
+            // Store message data in Firestore
+
             firestore.collection("Messages").document(uniqueId.toString()).collection("chats")
                 .document(Utils.getTime()).set(hashMap).addOnCompleteListener { taskmessage ->
+
+                    // Update conversation details
 
                     val setHashap = hashMapOf<String, Any>(
                         "friendid" to receiver,
@@ -94,8 +107,12 @@ class ChatAppViewModel : ViewModel() {
                         "person" to "you"
                     )
 
+                    // Update user conversation
+
                     firestore.collection("Conversation${Utils.getUidLoggedIn()}").document(receiver)
                         .set(setHashap)
+
+                    // Update friend conversation
 
                     firestore.collection("Conversation${receiver}").document(Utils.getUidLoggedIn())
                         .update(
@@ -106,6 +123,9 @@ class ChatAppViewModel : ViewModel() {
                             "person",
                             name.value!!
                         )
+
+                    // Send notification
+
 
                     firestore.collection("Tokens").document(receiver)
                         .addSnapshotListener { value, error ->
@@ -161,6 +181,8 @@ class ChatAppViewModel : ViewModel() {
 
         val context = MyApplication.instance.applicationContext
 
+        // Fetch current user details from Firestore
+
         firestore.collection("Users").document(Utils.getUidLoggedIn())
             .addSnapshotListener { value, error ->
 
@@ -178,10 +200,14 @@ class ChatAppViewModel : ViewModel() {
             }
     }
 
+    // Update profile
+
     fun updateProfile() = viewModelScope.launch(Dispatchers.IO) {
 
         val context = MyApplication.instance.applicationContext
         val imageUrlValue = imageUrl.value ?: ""
+
+        // Update user profile details in Firestore
 
         val hashMapUser = hashMapOf(
             "username" to "${firstname.value} ${lastname.value}",

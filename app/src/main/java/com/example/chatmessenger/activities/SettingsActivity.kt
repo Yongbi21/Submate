@@ -18,6 +18,10 @@ import com.example.chatmessenger.databinding.DialogSaveFontsizeBinding
 import com.example.chatmessenger.helper.FontFamilyHelper
 import com.example.chatmessenger.utility.VibrationUtil
 
+/**
+ * Activity for user settings, including font size and family customization.
+ */
+
 class SettingsActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySettingsBinding
@@ -119,6 +123,10 @@ class SettingsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
     }
+
+    /**
+     * Refresh text size and font family for all relevant views.
+     */
 
     private fun refreshTextSize() {
         binding.titleText.textSize = FontSizeHelper.getFontTitleSize(applicationContext)

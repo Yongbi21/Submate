@@ -10,9 +10,22 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.*
 
+/**
+ * Repository class responsible for fetching messages from Firestore database.
+ */
+
 class MessageRepo {
 
+    // Initialize Firestore instance
+
     val firestore = FirebaseFirestore.getInstance()
+
+    /**
+     * Retrieves a LiveData object containing a list of messages between the current user and a friend.
+     *
+     * @param friendid The ID of the friend whose messages are to be retrieved.
+     * @return LiveData<List<Messages>> representing the list of messages.
+     */
 
     fun getMessages(friendid: String): LiveData<List<Messages>> {
         val messages = MutableLiveData<List<Messages>>()

@@ -13,6 +13,13 @@ import com.example.chatmessenger.helper.FontSizeHelper
 import com.example.chatmessenger.modal.Messages
 import com.example.chatmessenger.utility.VibrationUtil
 
+/**
+ * Adapter for displaying chat messages in a RecyclerView.
+ * Responsible for inflating message item views and binding message data to them.
+ * Adapter class for the RecyclerView displaying chat messages.
+ * @property messageClickListener Listener for handling click events on message items.
+ */
+
 class MessageAdapter(private val messageClickListener: MessageClickListener) :
     RecyclerView.Adapter<MessageAdapter.MessageHolder>() {
 
@@ -70,10 +77,21 @@ class MessageAdapter(private val messageClickListener: MessageClickListener) :
     override fun getItemViewType(position: Int) =
         if (listOfMessage[position].sender == Utils.getUidLoggedIn()) RIGHT else LEFT
 
+    /**
+     * Sets the list of messages to be displayed in the RecyclerView.
+     *
+     * @param newList The new list of messages.
+     */
+
     fun setList(newList: List<Messages>) {
         this.listOfMessage = newList
         notifyDataSetChanged()
     }
+
+    /**
+     * ViewHolder class for the message item view.
+     * Responsible for holding references to views within the item layout.
+     */
 
     class MessageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageText: TextView = itemView.findViewById(R.id.show_message)
