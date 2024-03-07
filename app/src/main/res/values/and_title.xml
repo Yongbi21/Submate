@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="popup_menu_items">
+        <item>Copy to Clipboard</item>
+        <item>Text to Voice</item>
+    </string-array>
+</resources>

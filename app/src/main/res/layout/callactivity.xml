@@ -1,0 +1,58 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.chatmessenger.mvvm.ChatAppViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Profile Background (ImageView to display the user's background) -->
+        <ImageView
+            android:id="@+id/profileBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/sky_blue" />
+
+        <Button
+            android:id="@+id/endCallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="145dp"
+            android:layout_marginBottom="186dp"
+            android:text="End Call" />
+
+        <!-- Use a LinearLayout for subtitle and mute buttons -->
+        <LinearLayout
+            android:id="@+id/subtitleMuteContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/endCallButton"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="93dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/muteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mute" />
+
+            <Button
+                android:id="@+id/subtitlesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Subtitles" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

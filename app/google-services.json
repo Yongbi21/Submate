@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709305547108",
+    "project_id": "chatmessengerinnovate",
+    "storage_bucket": "chatmessengerinnovate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709305547108:android:be6e6b5be7fc6e74742271",
+        "android_client_info": {
+          "package_name": "com.example.chatmessenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUddNWi6mzsGbX4xI18IWWpR3BT0qxFUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
