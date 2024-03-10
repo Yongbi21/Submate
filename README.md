@@ -5,8 +5,19 @@
 - Kotlin
 - Firebase
 
-A chat application that has features that uses haptic feedback, speech to text technology and text to speech technology as well as different features such as customization of font size and 
-font style, searching, adding and removing a user, real time chat, real time notification.
+## ✨ Features
+
+- Speech to text
+- Text to speech
+- Customizable font style and font sizes
+- Haptic Feedback (Vibrations)
+- Real Time Chat
+- Realt Time Notification
+- Searching , Removing and Adding Users
+- Signup
+- Login
+- Updating Profile
+
 
 
 
